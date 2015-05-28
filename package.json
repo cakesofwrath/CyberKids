@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "A website for a summer computer science course, taught in Scratch.",
   "main": "app/scripts/main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "keywords": [
     "scratch",
     "education"
@@ -14,7 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.4.0",
-    "bootstrap": "^3.3.4"
+    "angular-route": "^1.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cakesofwrath/ScratchCourse.git"
   },
   "devDependencies": {
     "browserify": "^10.2.1",

@@ -4,16 +4,17 @@
     <title>Scratch Course</title>
 
     <!-- b/c I'm too lazy to use npm-css -->
-    <link type="text/css" rel="stylesheet" href="/vendors/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="/css/skeleton/normalize.css">
+    <link type="text/css" rel="stylesheet" href="/css/skeleton/skeleton.css">
+    <link type="text/css" rel="stylesheet" href="/css/styles.css">
+    <base href="/"> <!-- https://scotch.io/quick-tips/pretty-urls-in-angularjs-removing-the-hashtag -->
 </head>
 <body ng-controller="HomeCtrl">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h1>HAI</h1>
-            </div>
-        </div>
+    <div class="header" ng-include="'/views/partials/header.html'"></div>
+    <div class="container" id="main">
+        <div ng-view></div>
     </div>
-    <script src="/js/bundle.js"></script>
+    <div class="footer" ng-include="'/views/partials/footer.html'"></div>
+    <script type="text/javascript" src="/js/bundle.js"></script>
 </body>
 </html>

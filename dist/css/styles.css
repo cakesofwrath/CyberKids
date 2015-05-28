@@ -1,0 +1,48 @@
+
+.header {
+
+}
+
+.title {
+    display: inline-block;
+    bottom: 0;
+}
+
+.nav {
+    margin-left: 5rem;
+    float: right;
+    bottom: 0;
+}
+
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.nav ul li {
+    /*display: inline-block;*/
+    /*float: left;*/
+    display: inline;
+    width: 5rem;
+    height: 1.5rem;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+    margin: 0;
+}
+/*media at 920 */
+.nav ul li:hover, .nav ul li:active {
+    background-color: #ddd;
+}
+
+
+.nav a {
+    
+    text-align: center;
+    text-decoration: none;
+    padding: 0 3rem;
+    margin: 0;
+
+}
