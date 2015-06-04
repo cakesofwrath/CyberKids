@@ -1,3 +1,7 @@
+body {
+    margin-top: 25px;
+}
+
 
 .header {
 
@@ -6,43 +10,32 @@
 .title {
     display: inline-block;
     bottom: 0;
+    clear: right;
 }
 
 .nav {
-    margin-left: 5rem;
+    margin-left: 75px;
     float: right;
+    clear: left;
     bottom: 0;
 }
-
-.nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-.nav ul li {
-    /*display: inline-block;*/
-    /*float: left;*/
-    display: inline;
-    width: 5rem;
-    height: 1.5rem;
+/* add media queries/responsiveness later */
+.nav a {
+    display: inline-block;
+    /*float: right;*/
+/*    display: block;*/
+    width: 110px;
+    height: 30px;
+    line-height: 30px;
     border-style: solid;
     border-color: black;
     border-width: 3px;
     margin: 0;
+    text-decoration: none;
+    /*padding: 0 2em;*/
+    text-align: center;
 }
 /*media at 920 */
-.nav ul li:hover, .nav ul li:active {
+.nav a:hover, .nav a:active {
     background-color: #ddd;
-}
-
-
-.nav a {
-    
-    text-align: center;
-    text-decoration: none;
-    padding: 0 3rem;
-    margin: 0;
-
 }
