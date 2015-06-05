@@ -27,6 +27,7 @@ server.all("/*", function(req, res) {
 
 //dev task to start server
 gulp.task("dev", function() {
+	console.log("Running server on port: " + serverport);
     //start webserver
     server.listen(serverport);
     //live reload
