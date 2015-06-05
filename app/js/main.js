@@ -10,15 +10,15 @@ var app = angular.module("ScratchCourse", [require("angular-route")]);
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
         .when("/", {
-            templateUrl: "../views/pages/home.html",
+            templateUrl: "/views/pages/home.html",
             controller: "HomeCtrl"
         })
         .when("/learn", {
-            templateUrl: "../views/pages/learn.html",
+            templateUrl: "/views/pages/learn.html",
             controller: "LearnCtrl"
         })
         .when("/learn/:lessonId", {
-            templateUrl: "../views/pages/lesson.html",
+            templateUrl: "/views/pages/lesson.html",
             controller: "LessonCtrl"
         })
         .otherwise({
