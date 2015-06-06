@@ -24,6 +24,9 @@ server.use(livereload({port: livereloadport}));
 //use dist as rootfolder
 server.use(express.static("./dist"));
 //html5 pushstate? redirect back to index.html
+/*
+    Further routing later.
+*/
 server.all("/*", function(req, res) {
     res.sendFile("index.html", { root: "dist" });
 });
@@ -65,7 +68,7 @@ gulp.task("views", function() {
         .pipe(gulp.dest("dist/")); //put it in dist/ folder
 
     gulp.src("./app/views/content/**/img/*")
-        .pipe(gulp.dest("dist/views")); // move our images
+        .pipe(gulp.dest("dist/views/content")); // move our images
 
     //other views from app/views
     gulp.src("./app/views/{pages, partials}*")
@@ -82,7 +85,9 @@ gulp.task("styles", function() {
 
 gulp.task("content", function() {
     gulp.src("./app/views/content/**/*.json")
-        .pipe(cc());
+        .pipe(cc())
+        .pipe(gulp.dest("dist/views/content"))
+        .pipe(refresh(lrserver));
 });
 
 gulp.task("watch", ["lint", "browserify", "views", "styles", "content"], function() {
