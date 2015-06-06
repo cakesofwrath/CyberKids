@@ -14,6 +14,9 @@ var embedlr = require("gulp-embedlr"),
     livereloadport = 35729,
     serverport = 5000;
 
+// custom
+var cc = require("./utils/contentCompiler");
+
 //set up express server
 var server = express();
 //live reload
@@ -55,14 +58,17 @@ gulp.task("browserify", function() {
         .pipe(gulp.dest("dist/js/")); //output to dist folder
 });
 
-//Views task
+//static views
 gulp.task("views", function() {
     //get index
     gulp.src("./app/index.html")
         .pipe(gulp.dest("dist/")); //put it in dist/ folder
 
+    gulp.src("./app/views/content/**/img/*")
+        .pipe(gulp.dest("dist/views")); // move our images
+
     //other views from app/views
-    gulp.src("./app/views/**/*")
+    gulp.src("./app/views/{pages, partials}*")
         .pipe(gulp.dest("dist/views")) //put "em in dist/views
         .pipe(refresh(lrserver)); //tells lrserver to refresh
 });
@@ -74,19 +80,28 @@ gulp.task("styles", function() {
 
 });
 
-gulp.task("watch", ["lint", "browserify", "views", "styles"], function() {
+gulp.task("content", function() {
+    gulp.src("./app/views/content/**/*.json")
+        .pipe(cc());
+});
+
+gulp.task("watch", ["lint", "browserify", "views", "styles", "content"], function() {
     //watch js
     gulp.watch(
-        ["./app/js/*.js", "./app/js/**/*/js"], 
+        ["./app/js/*.js", "./app/js/**/*.js"], 
         ["lint", "browserify"]
     );
     gulp.watch(
-        ["./app/index.html", "./app/views/**/*.html"],
+        ["./app/index.html", "./app/views/pages/**/*.html", "./app/views/content/**/img/*"], //ignore content, even though the html filter kinda handles it...
         ["views"]
     );
     gulp.watch(
         ["./app/styles/**/*.css"],
         ["styles"]
+    );
+    gulp.watch(
+        ["./app/views/content/**/*.json"],
+        ["content"]
     );
 });
 

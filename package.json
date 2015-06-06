@@ -29,6 +29,7 @@
     "gulp-jshint": "^1.11.0",
     "gulp-livereload": "^3.8.0",
     "gulp-util": "^3.0.4",
+    "through2": "^0.6.5",
     "tiny-lr": "^0.1.5"
   }
 }
