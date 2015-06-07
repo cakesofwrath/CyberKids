@@ -71,7 +71,7 @@ gulp.task("views", function() {
         .pipe(gulp.dest("dist/views/content")); // move our images
 
     //other views from app/views
-    gulp.src("./app/views/{pages, partials}*")
+    gulp.src(["./app/views/**/*", "!./app/views/content/**/*"])
         .pipe(gulp.dest("dist/views")) //put "em in dist/views
         .pipe(refresh(lrserver)); //tells lrserver to refresh
 });

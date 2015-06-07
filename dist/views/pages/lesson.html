@@ -1,2 +1,9 @@
-<h1>Hai</h1>
-<p>{{ lessonId }}</p>
+<div ng-if="data != null">
+    <h2>Lesson {{ lessonId }}: {{ data.title }}</h2>
+    <div ng-bind-html="data.content.what"></div>
+    <div ng-bind-html="data.content.how"></div>
+    <div ng-bind-html="data.content.now"></div>
+</div>
+<div ng-if="data == null">
+    <h2>Lesson {{ lessonId }} Not Found!</h2>
+</div>
