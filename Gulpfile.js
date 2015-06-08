@@ -3,7 +3,8 @@ var gulp = require("gulp"),
     jshint = require("gulp-jshint"),
     browserify = require("gulp-browserify"),
     concat = require("gulp-concat"),
-    clean = require("gulp-clean");
+    clean = require("gulp-clean"),
+    fs = require("fs");
 
 //server stuff
 var embedlr = require("gulp-embedlr"),
@@ -27,9 +28,14 @@ server.use(express.static("./dist"));
 /*
     Further routing later.
 */
-server.all("/*", function(req, res) {
+/*server.all("/*", function(req, res) {
     res.sendFile("index.html", { root: "dist" });
+});*/
+
+server.get(/(?![utils\/]).+/g, function(req, res) {
+	res.sendFile("index.html", {root: "dist"});	
 });
+// server.get("utils/numPosts")
 
 //dev task to start server
 gulp.task("dev", function() {
@@ -88,6 +94,7 @@ gulp.task("content", function() {
         .pipe(cc())
         .pipe(gulp.dest("dist/views/content"))
         .pipe(refresh(lrserver));
+    
 });
 
 gulp.task("watch", ["lint", "browserify", "views", "styles", "content"], function() {
