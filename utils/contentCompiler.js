@@ -73,7 +73,8 @@ module.exports = function() {
 		var lessons = JSON.parse(fs.readFileSync("dist/views/content/lessons.json"), "utf-8");
 		lessons.data[parseInt(lessonNum)] = {
 			"title": data.title,
-			"thumb": "/views/content/" + lessonNum + "/img/" + imgs[0]
+			"thumb": "/views/content/" + lessonNum + "/img/" + imgs[0],
+			"number": lessonNum
 		};
 		fs.writeFileSync("dist/views/content/lessons.json", JSON.stringify(lessons));
 		delete data.imgs; // this is redundant in the orig json, I should really remove it

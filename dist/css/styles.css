@@ -6,47 +6,22 @@ body {
     background-repeat: repeat;
     background-position: left top;
 }
-
-
-/*.header {
-    background-color: #F26101;
-    width: 65%;
-    padding: 1%;
-    margin-left: auto;
-    margin-right: auto;
+/*https://color.adobe.com/Corporate-Orange-Blue-color-theme-121815/*/
+.lesson {
+    padding: 0 5rem;
+    background-color: gray;
+    color: white;
 }
 
-.title {
-    display: inline-block;
-    bottom: 0;
-    clear: right;
-}
-
-.nav {
-    margin-left: 75px;
-    float: right;
-    clear: left;
-    bottom: 0;
-}
-
-.nav a {
-    display: inline-block;
-
-    width: 110px;
-    height: 30px;
-    line-height: 30px;
-    border-style: solid;
-    border-color: black;
-    border-width: 3px;
+.thumb {
     margin: 0;
-    text-decoration: none;
-
-    text-align: center;
+    /*overflow: hidden;*/
 }
 
-.nav a:hover, .nav a:active {
-    background-color: #ddd;
-}*/
+.thumb img {
+    height: 15rem;
+    width: auto;
+}
 
 .logo {
     margin:0;
