@@ -32,7 +32,7 @@ server.use(express.static("./dist"));
     res.sendFile("index.html", { root: "dist" });
 });*/
 
-server.get(/(?![utils\/]).+/g, function(req, res) {
+server.get(/(?![utils]).+/g, function(req, res) {
 	res.sendFile("index.html", {root: "dist"});	
 });
 // server.get("utils/numPosts")
@@ -76,8 +76,11 @@ gulp.task("views", function() {
     gulp.src("./app/views/content/**/img/*")
         .pipe(gulp.dest("dist/views/content")); // move our images
 
+    gulp.src("./app/img/*")
+        .pipe(gulp.dest("dist/img"));
+
     //other views from app/views
-    gulp.src(["./app/views/**/*", "!./app/views/content/**/*"])
+    gulp.src(["./app/views/**/*.html", "!./app/views/content/**/*.html"])
         .pipe(gulp.dest("dist/views")) //put "em in dist/views
         .pipe(refresh(lrserver)); //tells lrserver to refresh
 });
@@ -104,7 +107,7 @@ gulp.task("watch", ["lint", "browserify", "views", "styles", "content"], functio
         ["lint", "browserify"]
     );
     gulp.watch(
-        ["./app/index.html", "./app/views/pages/**/*.html", "./app/views/content/**/img/*"], //ignore content, even though the html filter kinda handles it...
+        ["./app/index.html", "./app/views/**/*.html", "./app/views/content/**/img/*", "!./app/views/content/**/*.html"], //ignore content, even though the html filter kinda handles it...
         ["views"]
     );
     gulp.watch(

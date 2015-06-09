@@ -1,10 +1,19 @@
 body {
-    margin-top: 25px;
+    /*padding-top: 1.5%;*/
+    height: 100%;
+    width: 100%;
+    background-image: url(/img/small_steps.png);
+    background-repeat: repeat;
+    background-position: left top;
 }
 
 
-.header {
-
+/*.header {
+    background-color: #F26101;
+    width: 65%;
+    padding: 1%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .title {
@@ -19,11 +28,10 @@ body {
     clear: left;
     bottom: 0;
 }
-/* add media queries/responsiveness later */
+
 .nav a {
     display: inline-block;
-    /*float: right;*/
-/*    display: block;*/
+
     width: 110px;
     height: 30px;
     line-height: 30px;
@@ -32,10 +40,113 @@ body {
     border-width: 3px;
     margin: 0;
     text-decoration: none;
-    /*padding: 0 2em;*/
+
     text-align: center;
 }
-/*media at 920 */
+
 .nav a:hover, .nav a:active {
     background-color: #ddd;
+}*/
+
+.logo {
+    margin:0;
+}
+
+/* Props to http://davidwalsh.name/3d-menu */
+
+/* basic menu styles */
+.block-menu {
+    overflow: auto;
+    display: block;
+    background-color: #304269;
+    /*width: 100%;*/
+    padding: 0 21%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.block-menu li {
+    display: inline-block;
+    margin: 0;
+    /*padding: 0 2.3rem;*/
+    /*top: 50%;
+    transform: translateY(-50%);*/
+}
+
+.block-menu li a {
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    /*font-family: 'Passion One', Arial, sans-serif;*/
+    font-smoothing: antialiased;
+    /*text-transform: uppercase;*/
+    overflow: visible;
+    line-height: 20px;
+    font-size: 24px;
+    padding: 15px 10px;
+}
+
+/* animation domination */
+.three-d {
+
+    perspective: 200px;
+    transition: all .07s linear;
+    position: relative;
+    cursor: pointer;
+}
+    /* complete the animation! */
+    .three-d:hover .three-d-box, 
+    .three-d:focus .three-d-box {
+        transform: translateZ(-25px) rotateX(90deg);
+    }
+
+.three-d-box {
+    transition: all .3s ease-out;
+    transform: translatez(-25px);
+    transform-style: preserve-3d;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* 
+    put the "front" and "back" elements into place with CSS transforms, 
+    specifically translation and translatez
+*/
+.front {
+    transform: rotatex(0deg) translatez(25px);
+}
+
+.back {
+    transform: rotatex(-90deg) translatez(25px);
+    color: #F26101;
+}
+
+.front, .back {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #F26101;
+    padding: 15px 10px;
+    color: white;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+.right {
+    float: right;
+
+    background: #F26101;
+}
+
+.left {
+    float: left;
 }
