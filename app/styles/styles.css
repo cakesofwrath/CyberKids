@@ -118,14 +118,7 @@ body {
     put the "front" and "back" elements into place with CSS transforms, 
     specifically translation and translatez
 */
-.front {
-    transform: rotatex(0deg) translatez(25px);
-}
 
-.back {
-    transform: rotatex(-90deg) translatez(25px);
-    color: #F26101;
-}
 
 .front, .back {
     display: block;
@@ -139,6 +132,20 @@ body {
     color: white;
     pointer-events: none;
     box-sizing: border-box;
+}
+
+.front {
+    transform: rotatex(0deg) translatez(25px);
+}
+
+.back {
+    transform: rotatex(-90deg) translatez(25px);
+    color: #FFF;
+    background-color: #A94401;
+}
+
+.active {
+    background-color: #A94401;
 }
 
 .right {

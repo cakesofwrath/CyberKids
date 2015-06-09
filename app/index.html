@@ -10,8 +10,8 @@
     <base href="/"> <!-- https://scotch.io/quick-tips/pretty-urls-in-angularjs-removing-the-hashtag -->
 </head>
 <body ng-controller="HomeCtrl">
-    <div class="header" ng-include="'/views/partials/header.html'"></div>
-    <div class="container" id="main">
+    <div ng-controller="HeaderCtrl" class="header" ng-include="'/views/partials/header.html'"></div>
+    <div class="container main">
         <div ng-view></div>
     </div>
     <div class="footer" ng-include="'/views/partials/footer.html'"></div>
