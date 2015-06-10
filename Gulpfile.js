@@ -4,7 +4,8 @@ var gulp = require("gulp"),
     browserify = require("gulp-browserify"),
     concat = require("gulp-concat"),
     clean = require("gulp-clean"),
-    fs = require("fs");
+    fs = require("fs"),
+    rimraf = require("rimraf");
 
 //server stuff
 var embedlr = require("gulp-embedlr"),
@@ -28,14 +29,22 @@ server.use(express.static("./dist"));
 /*
     Further routing later.
 */
-/*server.all("/*", function(req, res) {
+server.all("/*", function(req, res) {
     res.sendFile("index.html", { root: "dist" });
-});*/
-
-server.get(/(?![utils]).+/g, function(req, res) {
-	res.sendFile("index.html", {root: "dist"});	
 });
+
+/*server.get(/(?![utils]).+/g, function(req, res) {
+	res.sendFile("index.html", {root: "dist"});	
+});*/
 // server.get("utils/numPosts")
+
+gulp.task("clean", function() {
+    rimraf("dist/", function(err) {
+        if(err) {
+            console.log(err);
+        }
+    });
+});
 
 //dev task to start server
 gulp.task("dev", function() {

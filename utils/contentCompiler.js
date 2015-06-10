@@ -1,5 +1,6 @@
 var fs = require("fs"),
 	gutil = require("gulp-util"),
+	mkdirp = require("mkdirp"),
 	through = require("through2");
 
 var PluginError = gutil.PluginError;
@@ -69,14 +70,27 @@ module.exports = function() {
 
 			data.content[sections[i]] = htmlFile;
 		}
-		
-		var lessons = JSON.parse(fs.readFileSync("dist/views/content/lessons.json"), "utf-8");
+		var isFound = false;
+		mkdirp.sync("dist/views/content/");
+		try {
+			var stats = fs.lstatSync("dist/views/content/lessons.json");
+			if(stats.isFile()) {
+				isFound = true;
+			}
+			else {
+				isFound = false;
+			}
+		}
+		catch(e) {}
+		// console.log(isFound);
+		var lessons = isFound ? JSON.parse(fs.readFileSync("dist/views/content/lessons.json", "utf-8")) : { "data":[] };
 		lessons.data[parseInt(lessonNum)] = {
 			"title": data.title,
 			"thumb": "/views/content/" + lessonNum + "/img/" + imgs[0],
 			"number": lessonNum
 		};
-		fs.writeFileSync("dist/views/content/lessons.json", JSON.stringify(lessons));
+		// console.log(lessons);
+		fs.writeFileSync("dist/views/content/lessons.json", JSON.stringify(lessons), "utf-8", "w+");
 		delete data.imgs; // this is redundant in the orig json, I should really remove it
 		file.contents = new Buffer(JSON.stringify(data));
 

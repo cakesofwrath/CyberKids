@@ -5,26 +5,49 @@ body {
     background-image: url(/img/small_steps.png);
     background-repeat: repeat;
     background-position: left top;
+    /*z-index: -1;*/
 }
+
+.main {
+    background-color: #91BED4;
+    padding: 3rem;
+    margin-top: -9rem; /* HACK */
+    padding-top: 9rem;
+    z-index: -1;
+    border-radius: 6%;
+    overflow:hidden;
+    top: 0;
+}
+
 /*https://color.adobe.com/Corporate-Orange-Blue-color-theme-121815/*/
 .lesson {
     padding: 0 5rem;
-    background-color: gray;
+    /*background-color: #91BED4;*/
     color: white;
 }
 
-.thumb {
-    margin: 0;
-    /*overflow: hidden;*/
+.lesson a {
+    color: white;
+
 }
 
-.thumb img {
+.lesson img {
     height: 15rem;
     width: auto;
 }
 
+.lessonImg {
+    width: 100%;
+    height: auto;
+}
+
 .logo {
     margin:0;
+}
+
+.header {
+    position: relative;
+    z-index: 4;
 }
 
 /* Props to http://davidwalsh.name/3d-menu */

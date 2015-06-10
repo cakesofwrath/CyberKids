@@ -12,7 +12,9 @@
   "dependencies": {
     "angular": "^1.4.0",
     "angular-route": "^1.4.0",
-    "angular-sanitize": "^1.3.16"
+    "angular-sanitize": "^1.3.16",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.4.0"
   },
   "repository": {
     "type": "git",
