@@ -13,7 +13,7 @@ body {
     padding: 3rem;
     margin-top: -9rem; /* HACK */
     padding-top: 9rem;
-    z-index: -1;
+    /*z-index: -1;*/
     border-radius: 6%;
     overflow:hidden;
     top: 0;

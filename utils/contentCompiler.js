@@ -91,7 +91,7 @@ module.exports = function() {
 		};
 		// console.log(lessons);
 		fs.writeFileSync("dist/views/content/lessons.json", JSON.stringify(lessons), "utf-8", "w+");
-		delete data.imgs; // this is redundant in the orig json, I should really remove it
+		// delete data.imgs; // this is redundant in the orig json, I should really remove it
 		file.contents = new Buffer(JSON.stringify(data));
 
 		callback(null, file);

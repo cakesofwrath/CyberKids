@@ -1,8 +1,8 @@
 <div ng-if="data != null">
     <h2>Lesson {{ lessonId }}: {{ data.title }}</h2>
-    <div ng-bind-html="data.content.what"></div>
-    <div ng-bind-html="data.content.how"></div>
-    <div ng-bind-html="data.content.now"></div>
+    <div class="what"><h4>What to Do?</h4><div ng-bind-html="data.content.what"></div></div>
+    <div class="how"><h4>How to Do It?</h4><div ng-bind-html="data.content.how"></div></div>
+    <div class="now"><h4>Now What?</h4><div ng-bind-html="data.content.now"></div></div>
 </div>
 <div ng-if="data == null">
     <h2>Lesson {{ lessonId }} Not Found!</h2>

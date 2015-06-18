@@ -6,7 +6,7 @@ var angular = require("angular"),
     LearnCtrl = require("./controllers/LearnCtrl"),
     LessonCtrl = require("./controllers/LessonCtrl");
 
-var app = angular.module("ScratchCourse", [require("angular-route"), require("angular-sanitize")]);
+var app = angular.module("CyberKids", [require("angular-route"), require("angular-sanitize")]);
 
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
