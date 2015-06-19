@@ -50,7 +50,7 @@ gulp.task("clean", function() {
 gulp.task("dev", function() {
 	console.log("Running server on port: " + serverport);
     //start webserver
-    server.listen(serverport);
+    server.listen(serverport, "0.0.0.0");
     //live reload
     lrserver.listen(livereloadport);
     //run watch, keeps up with changes
