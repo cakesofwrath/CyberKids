@@ -1,17 +1,14 @@
-var googleapis = require("googleapis");
-var drive = googleapis.drive("v2");
-var OAuth2 = googleapis.auth.OAuth2;
-var fs = require("fs");
-var request = require("request");
-var mkdirp = require("mkdirp");
+var googleapis = require("googleapis"),
+	drive = googleapis.drive("v2"),
+	OAuth2 = googleapis.auth.OAuth2,
+	fs = require("fs"),
+	request = require("request"),
+	mkdirp = require("mkdirp");
 
-var SERVICE_ACCOUNT_EMAIL = "155475534929-6jptuljhi8hms5342lj1ggjmk8iq3f5u@developer.gserviceaccount.com";  
-var CLIENT_ID = "155475534929-6jptuljhi8hms5342lj1ggjmk8iq3f5u.apps.googleusercontent.com";  
-// var SERVICE_ACCOUNT_KEY_FILE = "./key.pem";  
-var SCOPE = ["https://www.googleapis.com/auth/drive.readonly"];
+var SERVICE_ACCOUNT_EMAIL = "155475534929-6jptuljhi8hms5342lj1ggjmk8iq3f5u@developer.gserviceaccount.com",
+	CLIENT_ID = "155475534929-6jptuljhi8hms5342lj1ggjmk8iq3f5u.apps.googleusercontent.com",
+	SCOPE = ["https://www.googleapis.com/auth/drive.readonly"];
 
-// http://www.nczonline.net/blog/2014/03/04/accessing-google-spreadsheets-from-node-js/
-// http://devblog.kcadventuro.us/google-drive-api-service-account/
 var jwt = new googleapis.auth.JWT(
 	SERVICE_ACCOUNT_EMAIL,
 	null,
@@ -19,9 +16,8 @@ var jwt = new googleapis.auth.JWT(
 	SCOPE
 	);
 	
-var sectionTitles = ["what", "how", "now"]
+var sectionTitles = ["what", "how", "now"];
 	
-// thx http://stackoverflow.com/a/9229821/4416107
 var uniq = function(a) {
     var seen = {};
     return a.filter(function(item) {
@@ -82,7 +78,6 @@ jwt.authorize(function auth(error, tokens) {
 	}	
 	else {
 		jwt.credentials = tokens;
-		// console.log(tokens);
 	}
 	var lessonStr = uniq(lessonNums).map(function(val) {
 		return "title = '" + val + "'";	
@@ -94,8 +89,6 @@ jwt.authorize(function auth(error, tokens) {
 			console.error(err);
 		}
 		else {
-			// console.log(foldersResp);
-			// console.log(JSON.stringify(foldersResp));
 			var items = foldersResp.items;
 			for(var i in items) {
 				var folderId = items[i].id, lessonNum = items[i].title;
@@ -105,18 +98,15 @@ jwt.authorize(function auth(error, tokens) {
 					}
 					else {
 						var path = "./app/views/content/" + lessonNum;
-						// var path = "./test/" + lessonNum
-						// console.log(JSON.stringify(fRes));
 						var fItems = fRes.items;
 						for(var j in fItems) {
 							var item = fItems[j];
 							if(item.mimeType.indexOf("image") == -1) {
-								// var path = "./test/" + items[i].title + "/" + item.title;
 								mkdirp.sync(path); // b/c ENOENT
 								fs.writeFile(path + "/lesson.json", JSON.stringify({
 									"title": item.title
 								}, null, 2), { "flags": "w+", "encoding": "utf-8" }, function writeErr(err) { if(err) console.error(err); });
-								// var file = fs.createWriteStream(path, { "flags": "w+", "encoding": "utf-8" });
+								
 								request.get({
 									uri: item.exportLinks["text/plain"],
 									"headers": {

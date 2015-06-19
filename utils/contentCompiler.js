@@ -9,13 +9,11 @@ var sections = ["what", "how", "now"]; //current sections
 
 var token = /\#\#.[a-zA-Z0-9_.]*\#\#/g;
 
-// var ContentCompiler = function(options) {
+
 module.exports = function() {
-	// console.log("hai");
-	// console.log(fs.readdirSync("../app/views/content/"));
 	function getParent(fileName) {
 		var sp = fileName.split("/");
-		if(sp[sp.length-1].length === 0 || !sp[sp.length-1].trim() ) {//get rid of last empty one
+		if(sp[sp.length-1].length === 0 || !sp[sp.length-1].trim() ) { // get rid of last empty one
 			sp.pop();
 		}
 		sp.pop(); // get parent dir
@@ -59,7 +57,6 @@ module.exports = function() {
 					if(imgs.indexOf(repld) === -1) {
 						return callback(new PluginError("ContentCompiler", "Image not found: " + repld));
 					}
-					// htmlFile.replace(new RegExp("/" + m + "/g"), m.substring(2, m.length - 1))
 					htmlFile = htmlFile.replace(
 						m[0], 
 						"<img class=\"lessonImg\" src=\"/views/content/" + lessonNum + "/img/" + repld + "\" >"
@@ -82,21 +79,19 @@ module.exports = function() {
 			}
 		}
 		catch(e) {}
-		// console.log(isFound);
+		
 		var lessons = isFound ? JSON.parse(fs.readFileSync("dist/views/content/lessons.json", "utf-8")) : { "data":[] };
 		lessons.data[parseInt(lessonNum)] = {
 			"title": data.title,
 			"thumb": "/views/content/" + lessonNum + "/img/" + imgs[0],
 			"number": lessonNum
 		};
-		// console.log(lessons);
+		
 		fs.writeFileSync("dist/views/content/lessons.json", JSON.stringify(lessons), "utf-8", "w+");
-		// delete data.imgs; // this is redundant in the orig json, I should really remove it
+		
 		file.contents = new Buffer(JSON.stringify(data));
 
 		callback(null, file);
 	}
 	return through.obj(transform);
 };
-
-// module.exports = ContentCompiler;
