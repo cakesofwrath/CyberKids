@@ -92,17 +92,33 @@ body {
 /*footer*/
 .footer-menu {
     width: 50%;
+    height: 72px;
+    line-height: 72px;
+    margin-bottom: 0;
     display: block;
     list-style: none;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 .footer-menu li {
+    height: 100%;
+    line-height: 100%;
+    /*width: 72px;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto;*/
     display: inline-block;
     margin: 0;
+}
+
+.footer-menu li a {
+    height: 100%;
+    line-height: 100%;
+}
+
+.mail {
+    color: #000;
 }
 
 /* animation domination */
@@ -181,7 +197,7 @@ body {
     width: auto;
 }
 
-.darken img{
+.darken img {
     /*display: block;*/
     -webkit-transition: all 0.1s linear;
     -moz-transition: all 0.1s linear;
@@ -192,5 +208,19 @@ body {
 }
 
 .darken:hover img {
+    opacity: 1;
+}
+
+.darkenI {
+    /*display: block;*/
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    opacity: .4;
+}
+
+.darkenI:hover {
     opacity: 1;
 }

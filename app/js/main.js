@@ -25,6 +25,14 @@ app.config(function($routeProvider, $locationProvider) {
             controller: "LessonCtrl",
             pageTab: "learn"
         })
+        .when("/more", {
+            templateUrl: "/views/pages/more.html",
+            pageTab: "more"
+        })
+        .when("/parents", {
+            templateUrl: "/views/pages/parents.html",
+            pageTab: "parents"
+        })
         .otherwise({
             //should 404 later
             redirectTo: "/" // can do this with others too

@@ -2,13 +2,12 @@
   "name": "ScratchCourse",
   "version": "1.0.0",
   "description": "A website for a summer computer science course, taught in Scratch.",
-  "main": "app/scripts/main.js",
+  "main": "app/js/main.js",
   "keywords": [
     "scratch",
     "education"
   ],
   "author": "Alan Dai",
-  "license": "ISC",
   "dependencies": {
     "angular": "^1.4.0",
     "angular-route": "^1.4.0",
@@ -17,13 +16,7 @@
     "rimraf": "^2.4.0",
     "googleapis": "^2.0.5",
     "readline": "0.0.8",
-    "request": "^2.58.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cakesofwrath/ScratchCourse.git"
-  },
-  "devDependencies": {
+    "request": "^2.58.0",
     "browserify": "^10.2.1",
     "connect-livereload": "^0.5.3",
     "express": "^4.12.4",
@@ -37,5 +30,9 @@
     "gulp-util": "^3.0.4",
     "through2": "^0.6.5",
     "tiny-lr": "^0.1.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cakesofwrath/ScratchCourse.git"
   }
 }
