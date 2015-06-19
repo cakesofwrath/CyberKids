@@ -5,7 +5,7 @@ var LessonCtrl = function($scope, $routeParams, $http, $templateCache) {
     // Go get the compiled html page from content (the html is compiled from json by my grunt task)
     $http.get("/views/content/" + $routeParams.lessonId + "/lesson.json")
     	.then(function(res) {
-            console.log(res);
+            // console.log(res);
     		if(res.status) { // temporary hack until I put in 404 handling
                 $scope.data = res.data;
             }

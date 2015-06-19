@@ -80,12 +80,12 @@ gulp.task("browserify", function() {
 gulp.task("views", function() {
     //get index
     gulp.src("./app/index.html")
-        .pipe(gulp.dest("dist/")); //put it in dist/ folder
+        .pipe(gulp.dest("dist/")); //put it in dist/ folder\
 
     gulp.src("./app/views/content/**/img/*")
         .pipe(gulp.dest("dist/views/content")); // move our images
 
-    gulp.src("./app/img/*")
+    gulp.src("./app/img/**/*")
         .pipe(gulp.dest("dist/img"));
 
     //other views from app/views
@@ -95,7 +95,7 @@ gulp.task("views", function() {
 });
 
 gulp.task("styles", function() {
-    gulp.src("./app/styles/**/*.css")
+    gulp.src("./app/styles/**/*")
         .pipe(gulp.dest("dist/css/"))
         .pipe(refresh(lrserver));
 

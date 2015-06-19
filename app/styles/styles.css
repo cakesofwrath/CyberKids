@@ -50,6 +50,10 @@ body {
     z-index: 4;
 }
 
+.footer {
+    position: relative;
+}
+
 /* Props to http://davidwalsh.name/3d-menu */
 
 /* basic menu styles */
@@ -83,6 +87,22 @@ body {
     line-height: 20px;
     font-size: 24px;
     padding: 15px 10px;
+}
+
+/*footer*/
+.footer-menu {
+    width: 50%;
+    display: block;
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-menu li {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+    margin: 0;
 }
 
 /* animation domination */
@@ -154,4 +174,23 @@ body {
 
 .left {
     float: left;
+}
+
+.github {
+    height: 50px;
+    width: auto;
+}
+
+.darken img{
+    /*display: block;*/
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -ms-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    opacity: .4;
+}
+
+.darken:hover img {
+    opacity: 1;
 }
