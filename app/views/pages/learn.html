@@ -1,5 +1,9 @@
 <div class="row lesson" ng-repeat="lesson in lessons">
-	<h4><a ng-href="/learn/{{ lesson.number }}">{{ lesson.title }}</a></h4>
-    <!-- should be error checking if empty, but it won't be. -->
-	<img ng-src="{{ lesson.thumb }}">
+    <div class="four columns">
+    	<h4><a ng-href="/learn/{{ lesson.number }}">{{ lesson.title }}</a></h4>
+    </div>
+    <div class="eight columns">
+        <!-- should be error checking if empty, but it won't be. -->
+    	<img class="learnImg" ng-src="{{ lesson.thumb }}">
+    </div>
 </div>

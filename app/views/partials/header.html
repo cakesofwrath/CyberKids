@@ -6,22 +6,22 @@
     <li ng-class="{ active: pageTab == 'parents' }" class="right"><a href="/parents" class="three-d">
         Parents
         <span aria-hidden="true" class="three-d-box">
-            <span class="front">Parents</span>
-            <span class="back">Parents</span>
+            <span class="front" ng-class="{ active: pageTab == 'parents' }">Parents</span>
+            <span class="back" ng-class="{ active: pageTab == 'parents' }">Parents</span>
         </span>
     </a></li>
     <li ng-class="{ active: pageTab == 'more' }" class="right"><a href="/more" class="three-d">
         More
         <span aria-hidden="true" class="three-d-box">
-            <span class="front">More</span>
-            <span class="back">More</span>
+            <span class="front" ng-class="{ active: pageTab == 'more' }">More</span>
+            <span class="back" ng-class="{ active: pageTab == 'more' }">More</span>
         </span>
     </a></li>
     <li ng-class="{ active: pageTab == 'learn' }" class="right"><a href="/learn" class="three-d">
         Learn
         <span aria-hidden="true" class="three-d-box">
-            <span class="front">Learn</span>
-            <span class="back">Learn</span>
+            <span ng-class="{ active: pageTab == 'learn' }" class="front">Learn</span>
+            <span ng-class="{ active: pageTab == 'learn' }" class="back">Learn</span>
         </span>
     </a></li>
 </ul>

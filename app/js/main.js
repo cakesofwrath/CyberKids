@@ -4,7 +4,9 @@ var angular = require("angular"),
     HomeCtrl = require("./controllers/HomeCtrl"),
     HeaderCtrl = require("./controllers/HeaderCtrl"),
     LearnCtrl = require("./controllers/LearnCtrl"),
-    LessonCtrl = require("./controllers/LessonCtrl");
+    LessonCtrl = require("./controllers/LessonCtrl"),
+    cascade = require("./directives/cascade"),
+    carousel = require("./directives/carousel");
 
 var app = angular.module("CyberKids", [require("angular-route"), require("angular-sanitize")]);
 
@@ -44,6 +46,9 @@ app.config(function($routeProvider, $locationProvider) {
 app.controller("HomeCtrl", ["$scope", HomeCtrl])
     .controller("HeaderCtrl", ["$scope", "$route", HeaderCtrl])
     .controller("LearnCtrl", ["$scope", "$http", LearnCtrl])
-    .controller("LessonCtrl", ["$scope", "$routeParams", "$http", "$templateCache", LessonCtrl]);
+    .controller("LessonCtrl", ["$scope", "$routeParams", "$http", "$templateCache", "$sce", LessonCtrl]);
+
+app.directive("cascade", [cascade])
+    .directive("carousel", [carousel]);
 //https://docs.angularjs.org/api/ngRoute/service/$route#example
 // app.controller("HomeCtrl", ["$scope", HomeCtrl]);
