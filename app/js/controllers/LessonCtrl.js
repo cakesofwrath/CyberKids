@@ -14,6 +14,23 @@ var LessonCtrl = function($scope, $routeParams, $http, $templateCache, $sce) {
                 for(var k in res.data.content) {
                     $scope.data.content[k] = $sce.trustAsHtml(res.data.content[k]);
                 }
+                $http.get("/views/content/lessons.json")
+                    .then(function(res) {
+                        if(res.status) { // temporary hack until I put in 404 handling
+                            // $scope.lessons = res.data.data;
+                            // console.log($scope.lessons);
+                            $scope.next = res.data.data[parseInt($routeParams.lessonId) + 1] || null;
+                            $scope.prev = res.data.data[parseInt($routeParams.lessonId) - 1] || null;
+                            // console.log($scope.prev, $scope.next);
+                            // console.log(res.data.data);
+                        }
+                        else {
+                            // $scope.lessons = null;
+                            $scope.next = null;
+                            $scope.prev = null;
+                        }
+                        // $scope.data = res.data;
+                    });
                 // console.log($scope.data);
             }
             else {
