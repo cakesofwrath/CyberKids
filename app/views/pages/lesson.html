@@ -3,14 +3,25 @@
     <div class="row what"><h4>What to Do?</h4><div ng-bind-html="data.content.what"></div></div>
     <div class="row how"><h4>How to Do It?</h4><div ng-bind-html="data.content.how"></div></div>
     <div class="row now"><h4>Now What?</h4><div ng-bind-html="data.content.now"></div></div>
-    <!-- <div class="row pagination">
-        <div class="one-half column left">
-
+    <div class="row pagination">
+        <div class="one-half column leftPag">
+            <!-- <a ng-class="prev ? 'enable' : 'disable'"> -->
+            <a ng-if="prev != null" class="enable" ng-href="/learn/{{ prev.number }}">
+                <i class="fa fa-chevron-circle-left"></i>&nbsp;{{ prev.title }}
+            </a>
+            <a ng-if="prev == null" class="disable">
+                <i class="fa fa-chevron-circle-left"></i>
+            </a>
         </div>
-        <div class="one-half column right">
-
+        <div class="one-half column rightPag">
+            <a ng-if="next != null" class="enable" ng-href="/learn/{{ next.number }}">
+                {{ next.title }}&nbsp;<i class="fa fa-chevron-circle-right"></i>
+            </a>
+            <a ng-if="next == null" class="disable">
+                <i class="fa fa-chevron-circle-right"></i>
+            </a>
         </div>
-    </div> -->
+    </div>
 </div>
 <div ng-if="data == null">
     <h2>Lesson {{ lessonId }} Not Found!</h2>

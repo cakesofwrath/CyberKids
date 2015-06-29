@@ -351,6 +351,22 @@ body {
     text-indent: 2.4rem;
 }
 
+.leftPage a {
+    float: left;
+}
+
+.rightPag a {
+    float: right;
+}
+
+.enable {
+    color: #157A99;
+}
+
+.disable {
+    color: #999999;
+}
+
 /*
     MORE Page
 */
