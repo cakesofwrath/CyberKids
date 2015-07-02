@@ -11,4 +11,3 @@ Then, run ```node utils/getContent.js <lesson number> ``` to pull in new lesson 
 (Obviously, you can't use this unless you have access to the drive files. If you want to contribute, let me know.)
 
 Run the dev server with ```gulp dev```. My gulpfile might still be messed up though
-
