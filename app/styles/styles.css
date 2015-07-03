@@ -367,6 +367,10 @@ body {
     color: #999999;
 }
 
+.pagination {
+	font-size: 3rem;
+}
+
 /*
     MORE Page
 */
