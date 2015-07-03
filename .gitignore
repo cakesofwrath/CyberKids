@@ -7,3 +7,5 @@ testDrive.js
 key.pem
 .DS_Store
 content
+npm-debug.log
+.openshift
