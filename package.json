@@ -8,8 +8,8 @@
     "education"
   ],
   "scripts": {
-    "start": "node node_modules/grunt-cli/bin/grunt run",
-    "dev": "node node_modules/grunt-cli/bin/grunt dev"
+    "start": "node node_modules/gulp/bin/gulp.js run",
+    "dev": "node node_modules/gulp/bin/gulp.js dev"
   },
   "author": "Alan Dai",
   "dependencies": {
@@ -20,7 +20,6 @@
     "connect-livereload": "^0.5.3",
     "express": "^4.12.4",
     "googleapis": "^2.0.5",
-    "grunt-cli": "^0.1.13",
     "gulp": "^3.8.11",
     "gulp-browserify": "^0.5.1",
     "gulp-clean": "^0.3.1",
