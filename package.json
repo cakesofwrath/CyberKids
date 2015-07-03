@@ -7,6 +7,10 @@
     "scratch",
     "education"
   ],
+  "scripts": {
+    "start": "gulp run",
+    "dev": "gulp dev"
+  },
   "author": "Alan Dai",
   "dependencies": {
     "angular": "^1.4.0",

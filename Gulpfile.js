@@ -13,8 +13,11 @@ var embedlr = require("gulp-embedlr"),
     lrserver = require("tiny-lr")(),
     express = require("express"),
     livereload = require("connect-livereload"),
-    livereloadport = 35729,
-    serverport = 5000;
+    liveReloadPort = 35729,
+    serverPort = process.env.OPENSHIFT_NODEJS_PORT || 8080,
+    serverIp = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1",
+    devPort = 5000,
+    devIp = "127.0.0.1";
 
 // custom
 var cc = require("./utils/contentCompiler");
@@ -22,7 +25,7 @@ var cc = require("./utils/contentCompiler");
 //set up express server
 var server = express();
 //live reload
-server.use(livereload({port: livereloadport}));
+server.use(livereload({port: liveReloadPort}));
 //use dist as rootfolder
 server.use(express.static("./dist"));
 //html5 pushstate? redirect back to index.html
@@ -48,11 +51,19 @@ gulp.task("clean", function() {
 
 //dev task to start server
 gulp.task("dev", function() {
-	console.log("Running server on port: " + serverport);
+	console.log("Running dev server on port: " + serverPort);
     //start webserver
-    server.listen(serverport, "0.0.0.0");
+    server.listen(devPort, devIp);
     //live reload
-    lrserver.listen(livereloadport);
+    lrserver.listen(liveReloadPort);
+    //run watch, keeps up with changes
+    gulp.run("watch");
+});
+
+gulp.task("run", function() {
+    console.log("Running server on port: " + serverPort);
+    //start webserver
+    server.listen(serverPort, serverIp);
     //run watch, keeps up with changes
     gulp.run("watch");
 });
