@@ -140,3 +140,11 @@ gulp.task("watch", ["lint", "browserify", "views", "styles", "content"], functio
     );
 });
 
+if(require.main === module) {
+    gulp.run("run");
+}
+
+// hak for openshift
+module.exports = function() {
+    gulp.run("run");
+};
