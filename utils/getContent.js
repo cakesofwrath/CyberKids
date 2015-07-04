@@ -11,8 +11,9 @@ var SERVICE_ACCOUNT_EMAIL = "155475534929-6jptuljhi8hms5342lj1ggjmk8iq3f5u@devel
 
 var jwt = new googleapis.auth.JWT(
 	SERVICE_ACCOUNT_EMAIL,
+	"./key.pem",
 	null,
-	process.env.PEM_KEY,
+	// process.env.PEM_KEY,
 	SCOPE
 	);
 	
