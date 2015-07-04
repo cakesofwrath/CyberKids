@@ -25,7 +25,6 @@ var cc = require("./utils/contentCompiler");
 //set up express server
 var server = express();
 //live reload
-server.use(livereload({port: liveReloadPort}));
 //use dist as rootfolder
 server.use(express.static("./dist"));
 //html5 pushstate? redirect back to index.html
@@ -52,6 +51,7 @@ gulp.task("clean", function() {
 //dev task to start server
 gulp.task("dev", function() {
 	console.log("Running dev server on port: " + serverPort);
+    server.use(livereload({port: liveReloadPort}));
     //start webserver
     server.listen(devPort, devIp);
     //live reload
