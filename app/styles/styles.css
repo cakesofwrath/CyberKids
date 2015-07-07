@@ -50,13 +50,14 @@ body {
 */
 
 .carousel {
-    width: 50%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
 }
 
 .homeImg {
     width: 100%;
+    height: auto;
 }
 
 /* 
@@ -339,8 +340,11 @@ body {
     color: #F26101;
 }
 
-.learnImg {
-
+.moreSoon {
+    margin-top: 20px;
+    margin-left: auto; 
+    margin-right: auto;
+    text-align: center;
 }
 
 /*
