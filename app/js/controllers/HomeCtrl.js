@@ -22,13 +22,15 @@ var HomeCtrl = function($scope) {
         mls(function() {/*
                 when gf clicked
                 forever
-                   turn cw (15) degrees
-                   say [Hello!] for (2) secs
-                   if <mouse down?> then
-                      change [mouse clicks v] by (1)
+                   turn cw (30) degrees
+                   say [Poooo!] for (18) secs
+                   if <mouse up?> then
+                      change [mouse clicks v] by (10)
                    end
+                   stamp
         */})
     ];
+    // console.log($scope.scripts);
 };
 
 module.exports = HomeCtrl;

@@ -4,6 +4,7 @@ var $ = require("jquery");
 require("slick-carousel");
 
 var carousel = function() {
+    // console.log("I am running: carousels");
     return {
         restrict: "A",
         link: function(scope, elem, attrs) { //very corny, no need for now
@@ -30,7 +31,7 @@ var carousel = function() {
                 }, i*500);
             }); */
         }
-    }
+    };
 };
 
 module.exports = carousel;

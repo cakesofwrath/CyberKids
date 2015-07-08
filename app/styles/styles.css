@@ -60,6 +60,16 @@ body {
     height: auto;
 }
 
+/* for the home page blocks */
+
+.blocks > * {
+    backgorund-color: #91BED4 !important;
+}
+
+.blocks > div {
+    backgorund-color: #91BED4 !important;
+}
+
 /* 
     HEADER
     Props to http://davidwalsh.name/3d-menu 

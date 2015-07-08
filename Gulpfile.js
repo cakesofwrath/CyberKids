@@ -70,9 +70,9 @@ gulp.task("run", function() {
 
 //My JSHint task
 gulp.task("lint", function() {
-    gulp.src("./app/js/*.js")
-        .pipe(jshint())
-        .pipe(jshint.reporter("default"));
+    // gulp.src("./app/js/*.js")
+    //     .pipe(jshint())
+    //     .pipe(jshint.reporter("default"));
 });
 
 //Browserify task

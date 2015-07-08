@@ -7,10 +7,10 @@ var angular = require("angular"),
     LessonCtrl = require("./controllers/LessonCtrl"),
     cascade = require("./directives/cascade"),
     carousel = require("./directives/carousel"),
-    homeScripts = require("./directives/homeScripts");
+    blocks = require("./directives/blocks");
 
 var app = angular.module("CyberKids", [require("angular-route"), require("angular-sanitize")]);
-
+// console.log(homeScripts, carousel);
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
         .when("/", {
@@ -51,6 +51,8 @@ app.controller("HomeCtrl", ["$scope", HomeCtrl])
 
 app.directive("cascade", [cascade])
     .directive("carousel", [carousel])
-    .directive("homeScripts", [homeScripts]);
+    .directive("blocks", [blocks]);
+
+console.log(app);
 //https://docs.angularjs.org/api/ngRoute/service/$route#example
 // app.controller("HomeCtrl", ["$scope", HomeCtrl]);
