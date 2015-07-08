@@ -16,8 +16,10 @@ var HomeCtrl = function($scope) {
                    end
         */}),
         mls(function() {/*
-                when [space v] key pressed
-                stamp
+                define jump (height)
+                set [i v] to [1]
+                repeat until <(i) * [4] = (height)>
+                  change y by (4)
         */}),
         mls(function() {/*
                 when gf clicked
