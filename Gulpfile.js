@@ -4,6 +4,7 @@ var gulp = require("gulp"),
     browserify = require("gulp-browserify"),
     concat = require("gulp-concat"),
     clean = require("gulp-clean"),
+    minifyCss = require('gulp-minify-css'),
     fs = require("fs"),
     rimraf = require("rimraf");
 
@@ -70,9 +71,9 @@ gulp.task("run", function() {
 
 //My JSHint task
 gulp.task("lint", function() {
-    // gulp.src("./app/js/*.js")
-    //     .pipe(jshint())
-    //     .pipe(jshint.reporter("default"));
+    gulp.src("./app/js/*.js")
+        .pipe(jshint())
+        .pipe(jshint.reporter("default"));
 });
 
 //Browserify task
@@ -112,6 +113,13 @@ gulp.task("styles", function() {
 
 });
 
+gulp.task("minify", function() {
+    gulp.src("./app/styles/**/*.css")
+        .pipe(minifyCss())
+        .pipe(gulp.dest("dist/css/"))
+        .pipe(refresh(lrserver));
+});
+
 gulp.task("content", function() {
     gulp.src("./app/views/content/**/*.json")
         .pipe(cc())
@@ -120,7 +128,7 @@ gulp.task("content", function() {
     
 });
 
-gulp.task("watch", ["lint", "browserify", "views", "styles", "content"], function() {
+gulp.task("watch", ["lint", "browserify", "views", "styles", "minify", "content"], function() {
     //watch js
     gulp.watch(
         ["./app/js/*.js", "./app/js/**/*.js"], 
@@ -131,8 +139,12 @@ gulp.task("watch", ["lint", "browserify", "views", "styles", "content"], functio
         ["views"]
     );
     gulp.watch(
-        ["./app/styles/**/*.css"],
+        ["./app/styles/**/*"],
         ["styles"]
+    );
+    gulp.watch(
+        ["./app/styles/**/*.css"],
+        ["minify"]
     );
     gulp.watch(
         ["./app/views/content/**/*.json"],

@@ -1,7 +1,7 @@
 "use strict";
 
 var $ = require("jquery");
-var sb2 = require("../scratchblocks2");
+var sb2 = require("../scratchblocks2.min");
 // console.log($, sb2);
 var blocks = function() {
     // console.log("I am running: blocks");

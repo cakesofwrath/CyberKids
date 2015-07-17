@@ -7,10 +7,11 @@ var angular = require("angular"),
     LessonCtrl = require("./controllers/LessonCtrl"),
     cascade = require("./directives/cascade"),
     carousel = require("./directives/carousel"),
-    blocks = require("./directives/blocks");
+    blocks = require("./directives/blocks"),
+    scratchblocks = require("./directives/scratchblocks");
 
 var app = angular.module("CyberKids", [require("angular-route"), require("angular-sanitize")]);
-// console.log(homeScripts, carousel);
+
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
         .when("/", {
@@ -36,9 +37,12 @@ app.config(function($routeProvider, $locationProvider) {
             templateUrl: "/views/pages/parents.html",
             pageTab: "parents"
         })
+        .when("/about", {
+            templateUrl: "/views/pages/about.html"
+        })
         .otherwise({
             //should 404 later
-            redirectTo: "/" // can do this with others too
+            redirectTo: "/views/pages/404.html" // can do this with others too
         });
         // https://scotch.io/tutorials/single-page-apps-with-angularjs-routing-and-templating
     $locationProvider.html5Mode(true); //gets rid of hash in url
@@ -51,8 +55,5 @@ app.controller("HomeCtrl", ["$scope", HomeCtrl])
 
 app.directive("cascade", [cascade])
     .directive("carousel", [carousel])
-    .directive("blocks", [blocks]);
-
-console.log(app);
-//https://docs.angularjs.org/api/ngRoute/service/$route#example
-// app.controller("HomeCtrl", ["$scope", HomeCtrl]);
+    .directive("blocks", [blocks])
+    .directive("scratchblocks", [scratchblocks]);

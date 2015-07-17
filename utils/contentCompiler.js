@@ -7,7 +7,9 @@ var PluginError = gutil.PluginError;
 
 var sections = ["what", "how", "now"]; //current sections
 
-var token = /\#\#.[a-zA-Z0-9_.]*\#\#/g;
+var imgToken = /\#\#.[a-zA-Z0-9_.]*\#\#/g,
+	preToken1 = /\[scratchblocks\]/g,
+	preToken2 = /\[\/scratchblocks\]/g;
 
 
 module.exports = function() {
@@ -24,7 +26,7 @@ module.exports = function() {
 		/*
 			Get the what, how, etc. files and combine their html into a JSON.
 			Put each section under content field of json
-			Replace all image tokens w/ appropro <img> tags,
+			Replace all image imgTokens w/ appropro <img> tags,
 			delete "img" field from original json
 			IMAGES IN TEXT SHOULD HAVE FILE EXTS
 		*/
@@ -33,7 +35,7 @@ module.exports = function() {
 		}
 		var dir = getParent(file.path);
 		// console.log(dir);
-		var lessonNum = dir.charAt(dir.length - 2);
+		var lessonNum = dir.split("/")[dir.split("/").length - 2];
 		var data = JSON.parse(file.contents.toString("utf-8"));
 		// console.log(data);
 		var imgs = fs.readdirSync(dir + "img/");
@@ -51,7 +53,7 @@ module.exports = function() {
 			}
 			var m;
 			do {
-				m = token.exec(htmlFile);
+				m = imgToken.exec(htmlFile);
 				if(m) {
 					var repld = m[0].replace(/\#/g, "");
 					if(imgs.indexOf(repld) === -1) {
@@ -64,7 +66,8 @@ module.exports = function() {
 				}
 			}
 			while(m);
-
+			htmlFile = htmlFile.replace(preToken1, "<pre class=\"blocks\">");
+			htmlFile = htmlFile.replace(preToken2, "</pre>");
 			data.content[sections[i]] = htmlFile;
 		}
 		var isFound = false;

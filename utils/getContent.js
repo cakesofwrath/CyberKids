@@ -122,7 +122,15 @@ jwt.authorize(function auth(error, tokens) {
 										var sections = body.split("\r\n\r\n\r\n");
 										for(var s in sections) {
 											// var paras = sections[s].split("\r\n");
+											var inScratchBlock = false;
 											var finalHtml = sections[s].split("\r\n").map(function getParas(row) {
+												// console.log(row);
+												if(row === "[scratchblocks]" || row === "[/scratchblocks]") {
+													inScratchBlock = !inScratchBlock;
+												}
+												if(inScratchBlock) {
+													return row;
+												}
 												return row.match(/\#\#.[a-zA-Z0-9_.]*\#\#/g) === null ? "<p class=\"content\">" + row + "</p>" : "<div class=\"img\">" + row + "</div>";
 											}).join("\n");
 											fs.writeFile(path + "/" + sectionTitles[s] + ".html", finalHtml, { "flags": "w+", "encoding": "utf-8" }, function writeErr(err) { if(err) console.error(err); })
