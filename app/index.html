@@ -22,5 +22,14 @@
     </div>
     <div class="footer" ng-include="'/views/partials/footer.html'"></div>
     <script type="text/javascript" src="/js/bundle.js"></script>
+    <script type="text/javascript" src="/css/jquery.min.js"></script>
+    <script type="text/javascript" src="/css/scratchblocks2.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        if(document.getElementsByClassName("blocks")) {
+            scratchblocks2.parse("pre.blocks");
+        }
+    });
+    </script>
 </body>
 </html>
