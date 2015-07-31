@@ -38,7 +38,7 @@ module.exports = function() {
 		var lessonNum = dir.split("/")[dir.split("/").length - 2];
 		var data = JSON.parse(file.contents.toString("utf-8"));
 		// console.log(data);
-		var imgs = fs.readdirSync(dir + "img/");
+		var imgs = fs.existsSync(dir + "img/") ? fs.readdirSync(dir + "img/") : null;
 		data.content = {};
 		for(var i in sections) {
 			var htmlFile = null;
@@ -56,7 +56,7 @@ module.exports = function() {
 				m = imgToken.exec(htmlFile);
 				if(m) {
 					var repld = m[0].replace(/\#/g, "");
-					if(imgs.indexOf(repld) === -1) {
+					if(imgs && imgs.indexOf(repld) === -1) {
 						return callback(new PluginError("ContentCompiler", "Image not found: " + repld));
 					}
 					htmlFile = htmlFile.replace(
@@ -86,7 +86,7 @@ module.exports = function() {
 		var lessons = isFound ? JSON.parse(fs.readFileSync("dist/views/content/lessons.json", "utf-8")) : { "data":[] };
 		lessons.data[parseInt(lessonNum)] = {
 			"title": data.title,
-			"thumb": "/views/content/" + lessonNum + "/img/" + imgs[0],
+			"thumb": imgs ? "/views/content/" + lessonNum + "/img/" + imgs[0] : null,
 			"number": lessonNum
 		};
 		

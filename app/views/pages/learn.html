@@ -4,7 +4,10 @@
     </div>
     <div class="six columns">
         <!-- should be error checking if empty, but it won't be. -->
-    	<img class="learnImg" ng-src="{{ lesson.thumb }}">
+    	<!-- <img class="learnImg" ng-src="{{ lesson.thumb }}"> -->
+        <div ng-if="lesson.thumb != null">
+            <img class="learnImg" ng-src="{{ lesson.thumb }}">
+        </div>
     </div>
 </div>
 <div class="moreSoon" ng-if="lessons != null">

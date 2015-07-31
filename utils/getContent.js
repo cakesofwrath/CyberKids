@@ -148,7 +148,6 @@ jwt.authorize(function auth(error, tokens) {
 									}
 								}).pipe(file);
 							}
-							
 						}
 					}
 				});

@@ -26,9 +26,12 @@
     <script type="text/javascript" src="/css/scratchblocks2.min.js"></script>
     <script>
     $(document).ready(function(){
-        if(document.getElementsByClassName("blocks")) {
+        /*if(document.getElementsByClassName("blocks")) {
             scratchblocks2.parse("pre.blocks");
-        }
+        }*/
+        $("pre.blocks").ready(function() {
+            scratchblocks2.parse("pre.blocks"); // uber hack b/c directives are annoying
+        });
     });
     </script>
 </body>
